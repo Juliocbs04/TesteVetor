@@ -46,7 +46,7 @@ public class Ordenar {
   
     public void imprimeVetor(){
         for(int i=0;i<vetor.length;i++){
-            System.out.printf("\n %d",vetor[i]);
+            System.out.printf("%d ",vetor[i]);
         }
     }
     
@@ -70,20 +70,12 @@ public class Ordenar {
     
     
     public void setAt(int pos, int value){
-        if(pos>=size){
-            System.out.println("Essa posição não existe no Vetor!");
-        }else{
-            vetor[pos]=value;    
-        }
+        vetor[pos]=value;    
+     
        
     }
     
     public int valueAt(int pos){
-        if(pos>=size){
-            System.out.println("\n Essa posição não existe no Vetor!");
-        }else{
-            System.out.printf("O valor da posição é: %d",vetor[pos]);    
-        }
         //retorna o valor na posição pos do vetor
         return vetor[pos];
     }
@@ -95,34 +87,19 @@ public class Ordenar {
         return tamanho;
     }
     
-    public int[] Concat(int [] vetor2){
-        int [] resultado= new int[vetor.length+vetor2.length];
+    public Ordenar Concat(Ordenar v2){
+        Ordenar v3= new Ordenar(this.length()+v2.length());
         int i;
-        for(i=0;i<vetor.length;i++){
-            resultado[i]= vetor[i];
+        for(i=0;i<this.length();i++){
+            v3.setAt(i, this.valueAt(i));
         }
         
-        for(;i<vetor.length+vetor2.length;i++){
-            resultado[i]= vetor2[i];
+        for(i=0;i<v2.length();i++){
+            v3.setAt(i+this.length(),v2.valueAt(i));
         }
         
-        
-        
-        return resultado;
+        return v3;
     }
 
-    int[] Concat(Ordenar v2) {
-        int [] resultado = new int[this.length()+v2.length()];
-        
-        for(int i=this.length();i<this.length()+v2.length();i++){
-            resultado[i]= v2.valueAt(i);
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
+   
 }
